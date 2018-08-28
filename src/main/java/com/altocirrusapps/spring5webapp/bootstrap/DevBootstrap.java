@@ -6,24 +6,38 @@ import org.springframework.stereotype.Component;
 
 import com.altocirrusapps.spring5webapp.models.Author;
 import com.altocirrusapps.spring5webapp.models.Book;
+import com.altocirrusapps.spring5webapp.models.Publisher;
 import com.altocirrusapps.spring5webapp.repositories.AuthorRepository;
 import com.altocirrusapps.spring5webapp.repositories.BookRepository;
+import com.altocirrusapps.spring5webapp.repositories.PublisherRepository;
 
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 	private AuthorRepository ar;
 	private BookRepository br;
+	private PublisherRepository pr;
 	
 		
-	public DevBootstrap(AuthorRepository ar, BookRepository br) {
+	public DevBootstrap(AuthorRepository ar, BookRepository br, PublisherRepository pr) {
 		//super();
 		this.ar = ar;
 		this.br = br;
+		this.pr = pr;
 	}
 
 	private void initData() {
-			
+		
+		//Harper
+		Publisher harper = new Publisher("Harper Collins","123 Main Street","Anytown","CO","80000");
+		pr.save(harper);
+		
+		//Worx
+		Publisher worx = new Publisher("Worx","124 Side Street","Somewhere","NJ","20000");
+		pr.save(worx);
+		
+		
+		
 		//eric
 		Author eric = new Author("Eric", "Evans");
 		Book ddd = new Book("Domain Driven Design", "1234", "Harper Collins");
