@@ -1,4 +1,4 @@
-package com.altocirrusapps.models;
+package com.altocirrusapps.spring5webapp.models;
 
 import java.util.HashSet;
 import java.util.Set;

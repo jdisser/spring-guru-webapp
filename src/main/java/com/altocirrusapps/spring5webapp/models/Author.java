@@ -1,4 +1,4 @@
-package com.altocirrusapps.models;
+package com.altocirrusapps.spring5webapp.models;
 
 import java.util.Set;
 
@@ -22,14 +22,15 @@ public class Author {
 	@ManyToMany(mappedBy = "authors")
 	private Set<Book> books = new HashSet<>();
 	
-	public void Author() {
+	
+	public Author() {
 		
 	}
-	public void Author(String last, String first) {
+	public Author(String last, String first) {
 		this.lastName = last;
 		this.firstName = first;
 	}
-	public void Author(String last, String first, Set<Book> books) {
+	public Author(String last, String first, Set<Book> books) {
 		this.lastName = last;
 		this.firstName = first;
 		this.books = books;
