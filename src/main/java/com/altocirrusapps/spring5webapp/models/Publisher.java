@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Publisher {
@@ -16,12 +18,16 @@ public class Publisher {
 	private String state;
 	private String zip;
 	
+	@OneToOne
+	@JoinColumn(name = "BOOK_ID")
+	private Book book;
+	
 	
 	public Publisher() {
 		//super();
 	}
 
-	public Publisher(String name, String address1, String city, String state, String zip) {
+	public Publisher(String name, String address1, String city, String state, String zip, Book book) {
 		//super();
 		//this.id = id;
 		this.name = name;
@@ -29,6 +35,7 @@ public class Publisher {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.book = book;
 		
 	}
 	
@@ -64,6 +71,24 @@ public class Publisher {
 	}
 	public long getId() {
 		return id;
+	}
+	
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		
+		if(book == null) {							//if the book is being nulled
+			if(this.book != null) {						//check if there is one already
+				this.book.setPublisher(null);			//and if so set its publisher to null
+			}
+		} else {
+			book.setPublisher(this);				//otherwise set the new book's publisher to this
+		}
+		
+		this.book = book;							//and set the book
 	}
 
 	@Override
