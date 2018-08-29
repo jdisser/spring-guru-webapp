@@ -39,7 +39,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 		
 		
 		//eric
-		Author eric = new Author("Eric", "Evans");
+		Author eric = new Author("Evans", "Eric");
 		Book ddd = new Book("Domain Driven Design", "1234", harper);
 		eric.getBooks().add(ddd);
 		ddd.getAuthors().add(eric);
@@ -52,7 +52,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 		
 		
 		//Rod
-		Author rod = new Author("Rod", "Johnson");
+		Author rod = new Author("Johnson", "Rod");
 		Book noEBJ = new Book("J2EE Development without EJB","2344",worx);
 		rod.getBooks().add(noEBJ);
 		noEBJ.getAuthors().add(rod);		
