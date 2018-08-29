@@ -3,6 +3,7 @@ package com.altocirrusapps.spring5webapp.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Book {
 	private String title;
 	private String isbn;
 	
-	@OneToOne(mappedBy = "book")
+	@OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
 	private Publisher publisher;
 	
 	@ManyToMany
@@ -40,6 +41,12 @@ public class Book {
 		this.title = title;
 		this.isbn = isbn;
 		this.publisher = publisher;
+	}
+	
+	
+
+	public Book() {
+		//super();
 	}
 
 	public String getTitle() {
@@ -69,7 +76,7 @@ public class Book {
 				this.publisher.setBook(null);
 			}
 		} else {
-			this.publisher.setBook(this);
+			this.publisher.setBook(this);			//this is conflicting with publisher:88
 		}
 		
 		this.publisher = pub;

@@ -39,6 +39,18 @@ public class Publisher {
 		
 	}
 	
+	public Publisher(String name, String address1, String city, String state, String zip) {
+		//super();
+		//this.id = id;
+		this.name = name;
+		this.address1 = address1;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.book = null;
+		
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -79,15 +91,15 @@ public class Publisher {
 	}
 
 	public void setBook(Book book) {
-		
+		/*
 		if(book == null) {							//if the book is being nulled
 			if(this.book != null) {						//check if there is one already
 				this.book.setPublisher(null);			//and if so set its publisher to null
 			}
 		} else {
-			book.setPublisher(this);				//otherwise set the new book's publisher to this
+			book.setPublisher(this);				//otherwise set the new book's publisher to this  CONFLICT WITH book:72
 		}
-		
+		*/
 		this.book = book;							//and set the book
 	}
 

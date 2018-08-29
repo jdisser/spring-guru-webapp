@@ -29,12 +29,12 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 	private void initData() {
 		
 		//Harper
-		Publisher harper = new Publisher("Harper Collins","123 Main Street","Anytown","CO","80000", null);
-		pr.save(harper);
+		Publisher harper = new Publisher("Harper Collins","123 Main Street","Anytown","CO","80000");
+		//pr.save(harper);
 		
 		//Worx
-		Publisher worx = new Publisher("Worx","124 Side Street","Somewhere","NJ","20000", null);
-		pr.save(worx);
+		Publisher worx = new Publisher("Worx","124 Side Street","Somewhere","NJ","20000");
+		//pr.save(worx);
 		
 		
 		
@@ -44,23 +44,25 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 		eric.getBooks().add(ddd);
 		ddd.getAuthors().add(eric);
 		
+		ar.save(eric);
+		br.save(ddd);
 		harper.setBook(ddd);
 		pr.save(harper);
 		
-		ar.save(eric);
-		br.save(ddd);
+		
 		
 		//Rod
 		Author rod = new Author("Rod", "Johnson");
 		Book noEBJ = new Book("J2EE Development without EJB","2344",worx);
 		rod.getBooks().add(noEBJ);
-		noEBJ.getAuthors().add(rod);
-		
+		noEBJ.getAuthors().add(rod);		
+
+		ar.save(rod);
+		br.save(noEBJ);
 		worx.setBook(noEBJ);
 		pr.save(worx);
 		
-		ar.save(rod);
-		br.save(noEBJ);
+
 	}
 
 	@Override
